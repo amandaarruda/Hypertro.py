@@ -3,6 +3,15 @@
 #### Notion do projeto: https://filipecalegario.notion.site/filipecalegario/2022-1-Introdu-o-Programa-o-CC-e-Programa-o-1-SI-Projeto-da-Disciplina-5210027773a54a3794431031462778a6
 
 Decisão: Sistema interativo
+Requisitos:
+- 3 objetos coletáveis diferentes (creatina, halteres e whey)
+- A colisão com a borda do personagem gera um ponto
+- Mostrar um contador de objetos coletados
+
+Ideias:
+- Adicionar sonzinho a cada quantidade de pontos
+- Novos níveis, novos elementos
+- Elementos que não podem ser pegos
 
 ---
 ### Sobre PyGame:
