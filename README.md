@@ -23,7 +23,8 @@ https://www.youtube.com/watch?v=ddgppBdhVn8
 
 ### Sobre POO:
 Conteúdo: https://www.alura.com.br/artigos/poo-programacao-orientada-a-objetos?gclid=EAIaIQobChMIrf615f_N-gIVDGuRCh1E7AEfEAAYASAAEgKPWPD_BwE
-![image](https://user-images.githubusercontent.com/66084295/194541757-9f9cd46e-c9e3-44fd-89e7-c7a2541d8668.png)
+
+![image](https://user-images.githubusercontent.com/66084295/194544005-518b5c2d-334e-4240-ae82-50ddd9854ea0.png)
 
 Se baseia em classes e objetos.
 
