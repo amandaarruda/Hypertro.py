@@ -9,6 +9,9 @@ Decisão: Sistema interativo
 https://www.pygame.org/news
 Ler a documentação: https://www.pygame.org/docs/
 
+Assistir a Introdução e desenvolver um primeiro quadrado com movimentação lateral. Adicionar também a gravidade.
+https://www.youtube.com/watch?v=ddgppBdhVn8
+
 ### Sobre POO:
 Conteúdo: https://www.alura.com.br/artigos/poo-programacao-orientada-a-objetos?gclid=EAIaIQobChMIrf615f_N-gIVDGuRCh1E7AEfEAAYASAAEgKPWPD_BwE
 ![image](https://user-images.githubusercontent.com/66084295/194541757-9f9cd46e-c9e3-44fd-89e7-c7a2541d8668.png)
