@@ -9,7 +9,7 @@ class Player(pygame.sprite.Sprite):
         #iniciando o contrutor da classe sprite que está dentro do pygame
         pygame.sprite.Sprite.__init__(self)
 
-        self.player_position_x = 0
+        self.player_position_x = 300 #começando no meio da tela
         self.player_position_y = SCREEN_HEIGHT - plataforma_height - 61 * 1.5
         #variavel que vai guardar a velocidade do player
         #é nada mais que a quantidade de px que ele vai andar por ação
