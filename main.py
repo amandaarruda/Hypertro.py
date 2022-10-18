@@ -66,7 +66,7 @@ sprites_group.add(item)
 sprites_group.add(player)
 
 
-bg = pygame.image.load("./assets/background.png")
+bg = pygame.image.load("./assets/background2.png")
 
 #while padrão para um jogo do py game(deve ser infinito)
 while True:
