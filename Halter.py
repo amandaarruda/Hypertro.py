@@ -8,7 +8,7 @@ class Halter(pygame.sprite.Sprite):
         self.SCREEN_WIDTH = SCREEN_WIDTH
 
         pygame.sprite.Sprite.__init__(self)
-        self.sprites = [pygame.image.load('assets/player/halter.PNG')]
+        self.sprites = [pygame.image.load('assets/items/halter.png')]
         self.current_sprite = 0
         self.image = self.sprites[self.current_sprite]
 
