@@ -1,6 +1,6 @@
 import pygame 
 from pygame.locals import *
-from Halter import Halter
+from Item import Item
 
 
 class Player(pygame.sprite.Sprite):

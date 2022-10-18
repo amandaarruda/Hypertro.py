@@ -3,10 +3,22 @@ from pygame.locals import *
 from sys import exit
 from random import randint
 
-from Halter import Halter
+from Item import Item
 from Player import Player
+from Mochila import Mochila
+
+#importando itens: 
+from ItemsClasses.Halter import Halter
+from ItemsClasses.Anilha import Anilha
+from ItemsClasses.Frango import Frango
+from ItemsClasses.Batata import Batata
+from ItemsClasses.Seringa import Seringa
+
 #iniciando o  pygame
 pygame.init()
+
+player_bag = Mochila()
+print(player_bag.get_mochila())
 
 GAME_NAME = "Hypertro.py: Em busca do shape"
 
@@ -56,15 +68,21 @@ def generate_random_position():
 
 
 #instanciando grupo de sprites do projeto
-sprites_group = pygame.sprite.Group()
+player_sprites_group = pygame.sprite.Group()
+items_sprites_group = pygame.sprite.Group()
 
 #Instanciando o objeto player
 player = Player(SCREEN_HEIGHT, plataforma_height, generate_random_position)
-item = Halter(SCREEN_WIDTH)
 #adicionando o player ao grupo de sprites 
-sprites_group.add(item)
-sprites_group.add(player)
+player_sprites_group.add(player)
 
+
+items_instances = [Halter(), Seringa(), Batata(), Frango(), Anilha()]
+items_list = []
+for instances in items_instances:
+    items_list.append(Item(SCREEN_WIDTH, instances),)
+for item in items_list:
+    items_sprites_group.add(item)
 
 bg = pygame.image.load("./assets/background2.png")
 
@@ -110,17 +128,24 @@ while True:
 
 
     #colocando todos os sprites do nosso grupo de sprites na tela
-    teste = sprites_group.draw(screen)
+    teste = player_sprites_group.draw(screen)
+    teste = items_sprites_group.draw(screen)
     #dando update neles a cada iteração do while
-    sprites_group.update()
+    player_sprites_group.update()
+    items_sprites_group.update()
 
 
+  
+    for item in items_sprites_group:
+        if player.get_rect().colliderect(item.get_rect()):
+            print('Coletou!')
+            item.reset()
 
+            items_list[randint(0, len(items_list)-1)].set_start_down(True, 'MAIN')
 
-    if player.get_rect().colliderect(item.get_rect()):
-        print('Coletou!')
-        item.collect()
-        score += 1
+            score += 1
+            player_bag.add_item(item.get_item_type())
+
     #verificando se a bolinha já chegou ao fim da tela
     if (item.item_fall()):
         print('Não pegou :/')
