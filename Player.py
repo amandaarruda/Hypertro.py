@@ -1,7 +1,5 @@
 import pygame 
 from pygame.locals import *
-from Item import Item
-
 
 class Player(pygame.sprite.Sprite):
     #construtor da classe
