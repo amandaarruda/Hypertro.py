@@ -2,7 +2,7 @@ class Mochila():
     def __init__(self) -> None:
         self.bag = {
             "halter": 0,
-            "seringa": 0,
+            "creatina": 0,
             "frango": 0,
             "batata_doce": 0,
             "anilha": 0

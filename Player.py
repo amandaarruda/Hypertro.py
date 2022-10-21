@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
         self.SCREEN_WIDTH = SCREEN_WIDTH
 
         self.player_position_x = 300 #começando no meio da tela
-        self.player_position_y = SCREEN_HEIGHT - plataforma_height - 61 * 1.5
+        self.player_position_y = SCREEN_HEIGHT - plataforma_height - 75 * 2
         #variavel que vai guardar a velocidade do player
         #é nada mais que a quantidade de px que ele vai andar por ação
         self.player_velocity = player_velocity
@@ -24,8 +24,8 @@ class Player(pygame.sprite.Sprite):
         #instanciando nosso player
         self.image = self.sprites[self.current_sprite]
         #mudando a escala dele para 1.5x
-        self.player_width = 50*1.5
-        self.player_height = 61*1.5
+        self.player_width = 75*2
+        self.player_height = 80*2
         self.image = pygame.transform.scale(self.image, (self.player_width, self.player_height))
 
         #colocando nosso player como um objeto em cena e definindo sua posição

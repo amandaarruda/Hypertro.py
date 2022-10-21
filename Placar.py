@@ -28,7 +28,7 @@ class Placar(pygame.sprite.Sprite):
 
         display_position = {
             "halter": 318,
-            "seringa": 388,
+            "creatina": 388,
             "frango": 460,
             "batata_doce": 531,
             "anilha": 602
