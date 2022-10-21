@@ -1,6 +1,3 @@
-from msilib.schema import Class
-
-
 class Halter():
     def __init__(self) -> None:
         self.item_type = 'halter'

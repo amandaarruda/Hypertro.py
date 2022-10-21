@@ -12,7 +12,7 @@ from ItemsClasses.Halter import Halter
 from ItemsClasses.Anilha import Anilha
 from ItemsClasses.Frango import Frango
 from ItemsClasses.Batata import Batata
-from ItemsClasses.Seringa import Seringa
+from ItemsClasses.Creatina import Creatina
 
 from Quadrante import Quadrant
 from Placar import Placar
@@ -26,6 +26,7 @@ player_bag = Mochila()
 
 GAME_NAME = "Hypertro.py: Em busca do shape"
 print(GAME_NAME)
+
 
 #definindo o tamanho da tela
 SCREEN_WIDTH = 640
@@ -41,14 +42,14 @@ frame_rate = pygame.time.Clock()
 
 #tamanho da plataforma
 plataform_width = 640
-plataforma_height = 50
+plataforma_height = 20
 
 
 ###############################################################
 ###############---CONTROLES DA FASE---########################
 VOLUME_DO_JOGO = 0.7
-VELOCIDADE_DO_PLAYER = 2.5
-VELOCIDADE_DOS_ITENS = 1.3
+VELOCIDADE_DO_PLAYER = 1.8
+VELOCIDADE_DOS_ITENS = 1.0
 NUMERO_DE_ITEMS_POR_FASE = 5
 #...
 ###############################################################
@@ -59,10 +60,10 @@ fails = 0
 
 #variavel que seta as informações do texto que vai aparecer o placar
 #Parâmetros = (nomeDaFonte, tamanho, negrito?, itálico?)
-display_text = pygame.font.SysFont('arial', 25, True, True)
+display_text = pygame.font.SysFont('MS Sans Serif', 30, True, True)
 
-background_music = Sound('./sounds/musics/musica_ambiente.mp3', VOLUME_DO_JOGO)
-background_music.play()
+#background_music = Sound('./sounds/musics/musica_ambiente.mp3', VOLUME_DO_JOGO)
+#background_music.play()
 
 #instanciando grupo de sprites do projeto
 player_sprites_group = pygame.sprite.Group()
@@ -77,7 +78,7 @@ player = Player(VELOCIDADE_DO_PLAYER, SCREEN_HEIGHT, SCREEN_WIDTH, plataforma_he
 player_sprites_group.add(player)
 
 quadrant = Quadrant(SCREEN_WIDTH, 4)
-items_instances = [Halter(), Seringa(), Batata(), Frango(), Anilha()]
+items_instances = [Halter(), Creatina(), Batata(), Frango(), Anilha()]
 items_list = []
 for instance in items_instances:
     items_list.append(Item(SCREEN_WIDTH,VELOCIDADE_DOS_ITENS, instance, quadrant),)
@@ -117,7 +118,7 @@ while True:
     #formatando a mensgem que vai apareer para o formato desejado
     #primeiro parametro é a mensagem, segundo é o anti-alinsign(algo assim)
     #e o tereiro é a cor da imagem
-    fails_formated_message = display_text.render(fails_message, True, (255, 0, 0))
+    fails_formated_message = display_text.render(fails_message, True, (0, 0, 0))
     #esse for irá captar todos os eventos que acontecerem
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -128,8 +129,8 @@ while True:
     #primeiro parâmetro é onde o nosso objeto será criando
     #segundo parâmetro é a cor
     #terceiro parâmetro é a posição
-    #quarto parâmetro é altura e largura
-    plataform = pygame.draw.rect(screen, (255, 0 ,0), (
+    #quarto parâmetro é altura e larguraa
+    plataform = pygame.draw.rect(screen, (190, 149, 129), (
                                         SCREEN_WIDTH-plataform_width, 
                                         SCREEN_HEIGHT-plataforma_height, 
                                         plataform_width, 
