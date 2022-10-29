@@ -37,9 +37,9 @@ class Player(pygame.sprite.Sprite):
         #atualizando a posição do player, aso tenha mudado
         self.rect.topleft = self.player_position_x, self.player_position_y
 
-        if pygame.key.get_pressed()[K_a] and self.player_position_x > 0: 
+        if (pygame.key.get_pressed()[K_a] or pygame.key.get_pressed()[K_LEFT]) and self.player_position_x > 0: 
             self.player_position_x -= self.player_velocity
-        if pygame.key.get_pressed()[K_d] and self.player_position_x < self.SCREEN_WIDTH - self.player_width: 
+        if (pygame.key.get_pressed()[K_d] or pygame.key.get_pressed()[K_RIGHT]) and self.player_position_x < self.SCREEN_WIDTH - self.player_width: 
             self.player_position_x += self.player_velocity 
 
         #verificando se há colisão com a bolinha

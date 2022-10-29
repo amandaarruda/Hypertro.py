@@ -8,7 +8,7 @@ class Placar(pygame.sprite.Sprite):
 
         self.screen = screen
 
-        self.sprites = [pygame.image.load('assets/display/placar.png')]
+        self.sprites = [pygame.image.load('./assets/display/placar.png')]
         self.bag = bag
 
         #variavel que guarda a posição da imagem atual
