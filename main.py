@@ -46,78 +46,35 @@ plataforma_height = 20
 
 ##########################################################################
 
-#ÍNICIO DA ÁREA DA TELA DE START
+#ÍNICIO DA ÁREA DA TELA DE START E ESCOLHA DE DIFICULDADE
 
-class Tela_start:
-    def __init__(self,tela) -> None:
-        pygame.mixer.init()
-        self.tela = tela
-        self.fonte = pygame.font.match_font('arial')
-        self.bg_start = pygame.image.load('./assets/background.png')
+from StartScreen import iniciar_tela_start
+from Dificuldade import continuar_dificuldade
 
-    #def carregar_arquivos(self, background):
-        
+iniciar_tela_start(screen)
+dificuldade = continuar_dificuldade(screen)
 
-    def mostrar_texto(self, texto, tamanho, cor, x, y):
-        #Exibe um texto na tela do jogo
-        fonte = pygame.font.Font(self.fonte, tamanho)
-        texto = fonte.render(texto, True, cor)
-        texto_rect = texto.get_rect()
-        texto_rect.midtop = (x, y)
-        self.tela.blit(texto, texto_rect)
-
-    def esperar_por_jogador(self, framerate):
-        esperando = True
-        while esperando:
-            framerate.tick(500)
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    esperando = False
-                    #self.esta_rodando = False
-                if event.type == pygame.KEYUP:
-                    esperando = False    
-                    pygame.mixer.music.stop()         
-                    #pygame.mixer.Sound(os.path.join(self.diretorio_audios, constantes.TECLA_START)).play()
-
-    def mostrar_tela_start(self):
-        pygame.mixer.music.load("./sounds/musics/music_start.mp3")
-        pygame.mixer.music.play()
-
-        self.tela.blit(self.bg_start,(0,0))
-
-        self.mostrar_texto( 
-            'Hypertro.py: Em busca do shape',
-            40,
-            (255,255,0),
-            320,
-            200
-        )   
-
-        self.mostrar_texto(
-            'Pressione qualquer tecla para jogar',
-            32,
-            (255,255,0),
-            320,
-            320
-        )   
-
-        pygame.display.flip()
-        self.esperar_por_jogador(frame_rate)
-      
-
-start = Tela_start(screen)
-start.mostrar_tela_start()
-
-
-# FIM DA ÁREA DA TELA DE START
+# FIM DA ÁREA DA TELA DE START E ESCOLHA DE DIFICULDADE
 ##############################################################
 
 ###############################################################
 ###############---CONTROLES DA FASE---########################
-VOLUME_DO_JOGO = 0.7
+VOLUME_DO_JOGO = 0.5
 VELOCIDADE_DO_PLAYER = 1.8
-VELOCIDADE_DOS_ITENS = 1.0
-NUMERO_DE_ITEMS_POR_FASE = 5
+
+if dificuldade == "Easy":    
+    VELOCIDADE_DOS_ITENS = 0.5
+    NUMERO_DE_ITEMS_POR_FASE = 3
+
+if dificuldade == "Medium":    
+    VELOCIDADE_DOS_ITENS = 0.8
+    NUMERO_DE_ITEMS_POR_FASE = 4
+
+if dificuldade == "Hard":    
+    VELOCIDADE_DOS_ITENS = 1.0
+    NUMERO_DE_ITEMS_POR_FASE = 5
+    
+    
 #...
 ###############################################################
 
