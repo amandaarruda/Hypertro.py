@@ -13,12 +13,13 @@ from ItemsClasses.Anilha import Anilha
 from ItemsClasses.Frango import Frango
 from ItemsClasses.Batata import Batata
 from ItemsClasses.Creatina import Creatina
+from ItemsClasses.Seringa import Seringa
 
 from Quadrante import Quadrant
 from Placar import Placar
 
 from SoundController import Sound
-
+from LifeController.LifeController import LifeController
 #iniciando o  pygame
 pygame.init()
 
@@ -81,7 +82,7 @@ if dificuldade == "Hard":
 #placar e número de falhas
 score = 0
 fails = 0
-
+life_controller = LifeController(screen)
 #variavel que seta as informações do texto que vai aparecer o placar
 #Parâmetros = (nomeDaFonte, tamanho, negrito?, itálico?)
 display_text = pygame.font.SysFont('MS Sans Serif', 30, True, True)
@@ -95,6 +96,7 @@ items_sprites_group = pygame.sprite.Group()
 screen_log_sprites_group = pygame.sprite.Group()
 
 placar = Placar(screen, player_bag)
+
 screen_log_sprites_group.add(placar)
 #Instanciando o objeto player
 player = Player(VELOCIDADE_DO_PLAYER, SCREEN_HEIGHT, SCREEN_WIDTH, plataforma_height)
@@ -102,7 +104,7 @@ player = Player(VELOCIDADE_DO_PLAYER, SCREEN_HEIGHT, SCREEN_WIDTH, plataforma_he
 player_sprites_group.add(player)
 
 quadrant = Quadrant(SCREEN_WIDTH, 4)
-items_instances = [Halter(), Creatina(), Batata(), Frango(), Anilha()]
+items_instances = [Halter(), Creatina(), Batata(), Frango(), Anilha(), Seringa()]
 items_list = []
 for instance in items_instances:
     items_list.append(Item(SCREEN_WIDTH,VELOCIDADE_DOS_ITENS, instance, quadrant),)
@@ -111,7 +113,7 @@ for item in items_list:
 
 bakground_image = pygame.image.load("./assets/background2.png")
 
-
+seringa_down = False
 items_per_time = NUMERO_DE_ITEMS_POR_FASE
 def down_items_controller(item_list):
     active_items = 0
@@ -121,7 +123,15 @@ def down_items_controller(item_list):
     items_be_placed = items_per_time - active_items
     if items_be_placed > 0:
         for i in range(items_be_placed):
-            items_list[randint(0, len(items_list)-1)].set_start_down(True, 'MAIN')
+            while True:
+                item_down = items_list[randint(0, len(items_list)-1)]
+                if seringa_down:
+                    item_down.set_start_down(True, 'MAIN')
+                    break
+                else:
+                    if item_down.get_item_type() != 'seringa':
+                        item_down.set_start_down(True, 'MAIN')
+                        break
 
 down_items_controller(items_sprites_group)
 
@@ -135,13 +145,6 @@ while True:
     screen.fill((255,0,255))
     screen.blit(bakground_image, (0,0))
 
-    #mensgem que irá aparecer na tela
-    fails_message = f'Falhas = {fails}'
-
-    #formatando a mensgem que vai apareer para o formato desejado
-    #primeiro parametro é a mensagem, segundo é o anti-alinsign(algo assim)
-    #e o tereiro é a cor da imagem
-    fails_formated_message = display_text.render(fails_message, True, (0, 0, 0))
     #esse for irá captar todos os eventos que acontecerem
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -164,38 +167,38 @@ while True:
     screen_log_sprites_group.draw(screen)
     player_sprites_group.draw(screen)
     items_sprites_group.draw(screen)
+
     #dando update neles a cada iteração do while
     screen_log_sprites_group.update()
     player_sprites_group.update()
     items_sprites_group.update()
     
+    life_controller.update()
 
 
-  
+    #CONTROLE DE COLETA E QUEDA
     for item in items_sprites_group:
         if player.get_rect().colliderect(item.get_rect()):
             print('Coletou!')
+            if item.get_item_type() != 'seringa':
+                player_bag.add_item(item.get_item_type())
+            else:
+                life_controller.heal()
             item.reset()
-            score += 1
-            player_bag.add_item(item.get_item_type())
             down_items_controller(items_sprites_group)
 
         if (item.item_fall()):
             print('Não pegou :/')
+            if item.get_item_type() != 'seringa':
+                life_controller.damage()
             item.reset()
             down_items_controller(items_sprites_group)
-            fails +=1 
-            if(fails >= 3):
-                pass
-            
-    #verificando se a bolinha já chegou ao fim da tela
-   
+        
+        seringa_down = False if life_controller.is_full_life() else True
 
-   
-    #blit é para jogar nossa mensagem do score lá na tela
-    #o primeiro parâmetro é a mensagem já formatada
-    #e o segundo é a posição
-    
-    screen.blit(fails_formated_message, (140, 10))
+        if life_controller.get_life() <= 0 :
+            print('PERDEU!!!!!!!!!!!!!!!!!!!')
+    ###############################################      
+
     #esse flip é pra atualizar tudo a cada iteração
     pygame.display.flip()
