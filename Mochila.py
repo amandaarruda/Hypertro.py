@@ -30,7 +30,7 @@ class Mochila():
 
     def atingiu_meta(self, dificuldade):
         if dificuldade == "Easy":
-            meta = 1
+            meta = 20
         elif dificuldade == "Medium":
             meta = 30
         elif dificuldade == "Hard":
