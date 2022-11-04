@@ -22,6 +22,7 @@ class Tela_start:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     esperando = False
+                    return False
                 if event.type == pygame.KEYUP or event.type == pygame.MOUSEBUTTONDOWN:
                     esperando = False
                     self.tela.blit(self.bg_start,(0,0))   

@@ -28,3 +28,17 @@ class Mochila():
         self.bag[item_name] += 1
         print(f'{item_name} adicionado com sucesso a mochila, agora você possui {self.bag[item_name]} {item_name}(s)')
 
+    def atingiu_meta(self, dificuldade):
+        if dificuldade == "Easy":
+            meta = 1
+        elif dificuldade == "Medium":
+            meta = 30
+        elif dificuldade == "Hard":
+            meta = 40
+
+        atingiu = True
+        for i in self.bag.values():
+            if i < meta:
+                atingiu = False
+
+        return atingiu

@@ -15,6 +15,10 @@ from ItemsClasses.Batata import Batata
 from ItemsClasses.Creatina import Creatina
 from ItemsClasses.Seringa import Seringa
 
+from StartScreen import iniciar_tela_start
+from Dificuldade import continuar_dificuldade
+from ScreenWinLose import jogar_novamente_fucao
+
 from Quadrante import Quadrant
 from Placar import Placar
 
@@ -47,158 +51,179 @@ plataforma_height = 20
 
 ##########################################################################
 
-#ÍNICIO DA ÁREA DA TELA DE START E ESCOLHA DE DIFICULDADE
+#ÁREA DA TELA DE START E ESCOLHA DE DIFICULDADE
 
-from StartScreen import iniciar_tela_start
-from Dificuldade import continuar_dificuldade
+num_jogos = 0
 
 iniciar_tela_start(screen)
-dificuldade = continuar_dificuldade(screen)
 
-# FIM DA ÁREA DA TELA DE START E ESCOLHA DE DIFICULDADE
-##############################################################
+jogar_novamente = True
+while jogar_novamente:
 
-###############################################################
-###############---CONTROLES DA FASE---########################
-VOLUME_DO_JOGO = 0.5
-VELOCIDADE_DO_PLAYER = 1.8
+    if num_jogos != 0:
 
-if dificuldade == "Easy":    
-    VELOCIDADE_DOS_ITENS = 0.5
-    NUMERO_DE_ITEMS_POR_FASE = 3
+        jogar_novamente_fucao(screen, resultado)
 
-if dificuldade == "Medium":    
-    VELOCIDADE_DOS_ITENS = 0.8
-    NUMERO_DE_ITEMS_POR_FASE = 4
+        pygame.mixer.music.load("./sounds/musics/music_start.mp3")
+        pygame.mixer.music.play()
 
-if dificuldade == "Hard":    
-    VELOCIDADE_DOS_ITENS = 1.0
-    NUMERO_DE_ITEMS_POR_FASE = 5
-    
-    
-#...
-###############################################################
+        bg_start = pygame.image.load('./assets/background.png')
+        screen.blit(bg_start,(0,0))
 
-#placar e número de falhas
-score = 0
-fails = 0
-life_controller = LifeController(screen)
-#variavel que seta as informações do texto que vai aparecer o placar
-#Parâmetros = (nomeDaFonte, tamanho, negrito?, itálico?)
-display_text = pygame.font.SysFont('MS Sans Serif', 30, True, True)
+    dificuldade = continuar_dificuldade(screen)
 
-background_music = Sound('./sounds/musics/musica_ambiente.mp3', VOLUME_DO_JOGO)
-background_music.play()
+    ###############################################################
+    ###############---CONTROLES DA FASE---########################
+    VOLUME_DO_JOGO = 0.5
+    VELOCIDADE_DO_PLAYER = 1.8
 
-#instanciando grupo de sprites do projeto
-player_sprites_group = pygame.sprite.Group()
-items_sprites_group = pygame.sprite.Group()
-screen_log_sprites_group = pygame.sprite.Group()
+    if dificuldade == "Easy":    
+        VELOCIDADE_DOS_ITENS = 0.5
+        NUMERO_DE_ITEMS_POR_FASE = 3
 
-placar = Placar(screen, player_bag)
+    if dificuldade == "Medium":    
+        VELOCIDADE_DOS_ITENS = 0.8
+        NUMERO_DE_ITEMS_POR_FASE = 4
 
-screen_log_sprites_group.add(placar)
-#Instanciando o objeto player
-player = Player(VELOCIDADE_DO_PLAYER, SCREEN_HEIGHT, SCREEN_WIDTH, plataforma_height)
-#adicionando o player ao grupo de sprites 
-player_sprites_group.add(player)
+    if dificuldade == "Hard":    
+        VELOCIDADE_DOS_ITENS = 1.0
+        NUMERO_DE_ITEMS_POR_FASE = 5
+        
+        
+    #...
+    ###############################################################
 
-quadrant = Quadrant(SCREEN_WIDTH, 4)
-items_instances = [Halter(), Creatina(), Batata(), Frango(), Anilha(), Seringa()]
-items_list = []
-for instance in items_instances:
-    items_list.append(Item(SCREEN_WIDTH,VELOCIDADE_DOS_ITENS, instance, quadrant),)
-for item in items_list:
-    items_sprites_group.add(item)
+    #placar e número de falhas
+    score = 0
+    fails = 0
+    life_controller = LifeController(screen)
+    #variavel que seta as informações do texto que vai aparecer o placar
+    #Parâmetros = (nomeDaFonte, tamanho, negrito?, itálico?)
+    display_text = pygame.font.SysFont('MS Sans Serif', 30, True, True)
 
-bakground_image = pygame.image.load("./assets/background2.png")
+    background_music = Sound('./sounds/musics/musica_ambiente.mp3', VOLUME_DO_JOGO)
+    background_music.play()
 
-seringa_down = False
-items_per_time = NUMERO_DE_ITEMS_POR_FASE
-def down_items_controller(item_list):
-    active_items = 0
-    for item in item_list:
-        if item.get_start_down():   
-            active_items += 1
-    items_be_placed = items_per_time - active_items
-    if items_be_placed > 0:
-        for i in range(items_be_placed):
-            while True:
-                item_down = items_list[randint(0, len(items_list)-1)]
-                if seringa_down:
-                    item_down.set_start_down(True, 'MAIN')
-                    break
-                else:
-                    if item_down.get_item_type() != 'seringa':
+    #instanciando grupo de sprites do projeto
+    player_sprites_group = pygame.sprite.Group()
+    items_sprites_group = pygame.sprite.Group()
+    screen_log_sprites_group = pygame.sprite.Group()
+
+    placar = Placar(screen, player_bag)
+
+    screen_log_sprites_group.add(placar)
+    #Instanciando o objeto player
+    player = Player(VELOCIDADE_DO_PLAYER, SCREEN_HEIGHT, SCREEN_WIDTH, plataforma_height)
+    #adicionando o player ao grupo de sprites 
+    player_sprites_group.add(player)
+
+    quadrant = Quadrant(SCREEN_WIDTH, 4)
+    items_instances = [Halter(), Creatina(), Batata(), Frango(), Anilha(), Seringa()]
+    items_list = []
+    for instance in items_instances:
+        items_list.append(Item(SCREEN_WIDTH,VELOCIDADE_DOS_ITENS, instance, quadrant),)
+    for item in items_list:
+        items_sprites_group.add(item)
+
+    bakground_image = pygame.image.load("./assets/background2.png")
+
+    seringa_down = False
+    items_per_time = NUMERO_DE_ITEMS_POR_FASE
+    def down_items_controller(item_list):
+        active_items = 0
+        for item in item_list:
+            if item.get_start_down():   
+                active_items += 1
+        items_be_placed = items_per_time - active_items
+        if items_be_placed > 0:
+            for i in range(items_be_placed):
+                while True:
+                    item_down = items_list[randint(0, len(items_list)-1)]
+                    if seringa_down:
                         item_down.set_start_down(True, 'MAIN')
                         break
+                    else:
+                        if item_down.get_item_type() != 'seringa':
+                            item_down.set_start_down(True, 'MAIN')
+                            break
 
-down_items_controller(items_sprites_group)
-
-
-#while padrão para um jogo do py game(deve ser infinito)
-while True:
-    #definindo framerate
-    frame_rate.tick(500)
-
-    #definindo a cor de fundo com rgb
-    screen.fill((255,0,255))
-    screen.blit(bakground_image, (0,0))
-
-    #esse for irá captar todos os eventos que acontecerem
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            exit()
-    
-    #criando a plataforma(temporáro)
-    #primeiro parâmetro é onde o nosso objeto será criando
-    #segundo parâmetro é a cor
-    #terceiro parâmetro é a posição
-    #quarto parâmetro é altura e larguraa
-    plataform = pygame.draw.rect(screen, (190, 149, 129), (
-                                        SCREEN_WIDTH-plataform_width, 
-                                        SCREEN_HEIGHT-plataforma_height, 
-                                        plataform_width, 
-                                        plataforma_height))
+    down_items_controller(items_sprites_group)
 
 
-    #colocando todos os sprites do nosso grupo de sprites na tela
-    screen_log_sprites_group.draw(screen)
-    player_sprites_group.draw(screen)
-    items_sprites_group.draw(screen)
+    #while padrão para um jogo do py game(deve ser infinito)
+    rodar_jogo = True
+    while rodar_jogo:
+        #definindo framerate
+        frame_rate.tick(500)
 
-    #dando update neles a cada iteração do while
-    screen_log_sprites_group.update()
-    player_sprites_group.update()
-    items_sprites_group.update()
-    
-    life_controller.update()
+        #definindo a cor de fundo com rgb
+        screen.fill((255,0,255))
+        screen.blit(bakground_image, (0,0))
 
-
-    #CONTROLE DE COLETA E QUEDA
-    for item in items_sprites_group:
-        if player.get_rect().colliderect(item.get_rect()):
-            print('Coletou!')
-            if item.get_item_type() != 'seringa':
-                player_bag.add_item(item.get_item_type())
-            else:
-                life_controller.heal()
-            item.reset()
-            down_items_controller(items_sprites_group)
-
-        if (item.item_fall()):
-            print('Não pegou :/')
-            if item.get_item_type() != 'seringa':
-                life_controller.damage()
-            item.reset()
-            down_items_controller(items_sprites_group)
+        #esse for irá captar todos os eventos que acontecerem
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                exit()
         
-        seringa_down = False if life_controller.is_full_life() else True
+        #criando a plataforma(temporáro)
+        #primeiro parâmetro é onde o nosso objeto será criando
+        #segundo parâmetro é a cor
+        #terceiro parâmetro é a posição
+        #quarto parâmetro é altura e larguraa
+        plataform = pygame.draw.rect(screen, (190, 149, 129), (
+                                            SCREEN_WIDTH-plataform_width, 
+                                            SCREEN_HEIGHT-plataforma_height, 
+                                            plataform_width, 
+                                            plataforma_height))
 
-        if life_controller.get_life() <= 0 :
-            print('PERDEU!!!!!!!!!!!!!!!!!!!')
-    ###############################################      
 
-    #esse flip é pra atualizar tudo a cada iteração
-    pygame.display.flip()
+        #colocando todos os sprites do nosso grupo de sprites na tela
+        screen_log_sprites_group.draw(screen)
+        player_sprites_group.draw(screen)
+        items_sprites_group.draw(screen)
+
+        #dando update neles a cada iteração do while
+        screen_log_sprites_group.update()
+        player_sprites_group.update()
+        items_sprites_group.update()
+        
+        life_controller.update()
+
+
+        #CONTROLE DE COLETA E QUEDA
+        for item in items_sprites_group:
+            if player.get_rect().colliderect(item.get_rect()):
+                print('Coletou!')
+                if item.get_item_type() != 'seringa':
+                    player_bag.add_item(item.get_item_type())
+                else:
+                    life_controller.heal()
+                item.reset()
+                down_items_controller(items_sprites_group)
+
+            if (item.item_fall()):
+                print('Não pegou :/')
+                if item.get_item_type() != 'seringa':
+                    life_controller.damage()
+                item.reset()
+                down_items_controller(items_sprites_group)
+            
+            seringa_down = False if life_controller.is_full_life() else True
+
+            if player_bag.atingiu_meta(dificuldade):
+                print("Ganhou!!")
+                num_jogos += 1
+                resultado = "ganhou"
+                rodar_jogo = False
+
+            if life_controller.get_life() <= 0 :
+                print("Perdeu!!")
+                num_jogos += 1
+                resultado = "perdeu"
+                rodar_jogo = False
+                
+        ###############################################      
+
+        #esse flip é pra atualizar tudo a cada iteração
+        pygame.display.flip()
