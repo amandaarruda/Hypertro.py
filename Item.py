@@ -4,8 +4,6 @@ from random import randint
 
 pygame.init()
 
-
-
 class Item(pygame.sprite.Sprite):
     def __init__(self, SCREEN_WIDTH, item_velocity, item, quadrant) -> None:
         self.SCREEN_WIDTH = SCREEN_WIDTH
@@ -55,7 +53,6 @@ class Item(pygame.sprite.Sprite):
             self.rect.topleft = self.item_position_x, self.item_position_y
 
 
-
     def get_rect(self):
         return self.rect
 
@@ -64,5 +61,3 @@ class Item(pygame.sprite.Sprite):
 
     def item_fall(self):
         return self.item_position_y > 480
-
-        

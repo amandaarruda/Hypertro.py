@@ -3,7 +3,7 @@ import pygame
 import sys
 
 button_surface = pygame.image.load("./assets/display/button.png")
-button_surface = pygame.transform.scale(button_surface, (300, 90))
+button_surface = pygame.transform.scale(button_surface, (300, 60))
 
 def jogar_novamente_fucao(tela, resultado):
 	if resultado == "ganhou":
@@ -17,7 +17,7 @@ def jogar_novamente_fucao(tela, resultado):
 		pygame.mixer.music.load("./sounds/musics/music_lose.mp3")
 		pygame.mixer.music.play()
 
-	button = Button(tela, button_surface, 320, 350, "Jogar novamente")
+	button = Button(tela, button_surface, 320, 435, "Jogar novamente")
 	continuar = True
 	while continuar:
 		for event in pygame.event.get():

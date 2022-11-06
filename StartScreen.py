@@ -5,7 +5,8 @@ class Tela_start:
         pygame.mixer.init()
         self.tela = tela
         self.fonte = pygame.font.match_font('arial')
-        self.bg_start = pygame.image.load('./assets/background.png')      
+        self.bg_start = pygame.image.load('./assets/background.png') 
+        self.bg_level = pygame.image.load('./assets/backgroundb.png')      
 
     def mostrar_texto(self, texto, tamanho, cor, x, y):
         #Exibe um texto na tela do jogo
@@ -32,22 +33,6 @@ class Tela_start:
         pygame.mixer.music.play()
 
         self.tela.blit(self.bg_start,(0,0))
-
-        self.mostrar_texto( 
-            'Hypertro.py: Em busca do shape',
-            40,
-            (255,255,0),
-            320,
-            200
-        )   
-
-        self.mostrar_texto(
-            'Pressione qualquer tecla para jogar',
-            32,
-            (255,255,0),
-            320,
-            320
-        )   
 
         pygame.display.flip()
         self.esperar_por_jogador(pygame.time.Clock())

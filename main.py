@@ -32,7 +32,6 @@ player_bag = Mochila()
 GAME_NAME = "Hypertro.py: Em busca do shape"
 print(GAME_NAME)
 
-
 #definindo o tamanho da tela
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
@@ -43,7 +42,6 @@ pygame.display.set_caption(GAME_NAME)
 
 #variavel que vai controlar o framerate
 frame_rate = pygame.time.Clock()
-
 
 #tamanho da plataforma
 plataform_width = 640
@@ -70,25 +68,28 @@ while jogar_novamente:
         bg_start = pygame.image.load('./assets/background.png')
         screen.blit(bg_start,(0,0))
 
+    bg_level = pygame.image.load('./assets/backgroundb.png')
+    screen.blit(bg_level,(0,0))
     dificuldade = continuar_dificuldade(screen)
 
     ###############################################################
     ###############---CONTROLES DA FASE---########################
-    VOLUME_DO_JOGO = 0.5
-    VELOCIDADE_DO_PLAYER = 1.8
+    VOLUME_DO_JOGO = 0.4
 
     if dificuldade == "Easy":    
         VELOCIDADE_DOS_ITENS = 0.5
+        VELOCIDADE_DO_PLAYER = 1.8
         NUMERO_DE_ITEMS_POR_FASE = 3
 
     if dificuldade == "Medium":    
-        VELOCIDADE_DOS_ITENS = 0.8
+        VELOCIDADE_DOS_ITENS = 0.7
+        VELOCIDADE_DO_PLAYER = 1.7
         NUMERO_DE_ITEMS_POR_FASE = 4
 
     if dificuldade == "Hard":    
         VELOCIDADE_DOS_ITENS = 1.0
+        VELOCIDADE_DO_PLAYER = 1.6
         NUMERO_DE_ITEMS_POR_FASE = 5
-        
         
     #...
     ###############################################################
@@ -127,6 +128,7 @@ while jogar_novamente:
 
     bakground_image = pygame.image.load("./assets/background2.png")
 
+    #ativando o mecanismo da seringa
     seringa_down = False
     items_per_time = NUMERO_DE_ITEMS_POR_FASE
     def down_items_controller(item_list):
@@ -149,7 +151,6 @@ while jogar_novamente:
 
     down_items_controller(items_sprites_group)
 
-
     #while padrão para um jogo do py game(deve ser infinito)
     rodar_jogo = True
     while rodar_jogo:
@@ -166,12 +167,12 @@ while jogar_novamente:
                 pygame.quit()
                 exit()
         
-        #criando a plataforma(temporáro)
+        #criando a plataforma
         #primeiro parâmetro é onde o nosso objeto será criando
         #segundo parâmetro é a cor
         #terceiro parâmetro é a posição
         #quarto parâmetro é altura e larguraa
-        plataform = pygame.draw.rect(screen, (190, 149, 129), (
+        plataform = pygame.draw.rect(screen, (87,73,71), (
                                             SCREEN_WIDTH-plataform_width, 
                                             SCREEN_HEIGHT-plataforma_height, 
                                             plataform_width, 
@@ -189,7 +190,6 @@ while jogar_novamente:
         items_sprites_group.update()
         
         life_controller.update()
-
 
         #CONTROLE DE COLETA E QUEDA
         for item in items_sprites_group:
@@ -216,12 +216,14 @@ while jogar_novamente:
                 num_jogos += 1
                 resultado = "ganhou"
                 rodar_jogo = False
+                player_bag.__init__()
 
             if life_controller.get_life() <= 0 :
                 print("Perdeu!!")
                 num_jogos += 1
                 resultado = "perdeu"
                 rodar_jogo = False
+                player_bag.__init__()
                 
         ###############################################      
 

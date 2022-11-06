@@ -1,7 +1,6 @@
 import pygame 
 from pygame.locals import *
 
-
 class Placar(pygame.sprite.Sprite):
     def __init__(self, screen, bag) -> None:
         pygame.sprite.Sprite.__init__(self)
@@ -39,6 +38,3 @@ class Placar(pygame.sprite.Sprite):
             self.score_formated_message = self.display_text.render(self.score_message, True, (0, 0, 0))
             self.screen.blit(self.score_formated_message,
                     (display_position[item] if bag[item] >= 10 else display_position[item] + 5 , 7))
-            
-
-
