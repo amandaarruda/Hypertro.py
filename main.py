@@ -114,7 +114,7 @@ while jogar_novamente:
 
     screen_log_sprites_group.add(placar)
     #Instanciando o objeto player
-    player = Player(VELOCIDADE_DO_PLAYER, SCREEN_HEIGHT, SCREEN_WIDTH, plataforma_height)
+    player = Player(VELOCIDADE_DO_PLAYER, SCREEN_HEIGHT, SCREEN_WIDTH, plataforma_height,dificuldade)
     #adicionando o player ao grupo de sprites 
     player_sprites_group.add(player)
 

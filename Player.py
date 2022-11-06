@@ -4,7 +4,7 @@ from Dificuldade import continuar_dificuldade
 
 class Player(pygame.sprite.Sprite):
     #construtor da classe
-    def __init__(self, player_velocity, SCREEN_HEIGHT,SCREEN_WIDTH, plataforma_height):
+    def __init__(self, player_velocity, SCREEN_HEIGHT,SCREEN_WIDTH, plataforma_height, dificuldade):
         #iniciando o contrutor da classe sprite que está dentro do pygame
         pygame.sprite.Sprite.__init__(self)
 
@@ -18,7 +18,14 @@ class Player(pygame.sprite.Sprite):
         #variavel que contém as sprites do player
         #(é um array pois quando tivermos animação será várias imagens)
 
-        self.sprites = [pygame.image.load('assets/player/cariani_hard.png')]
+        if dificuldade == "Easy":
+            self.sprites = [pygame.image.load('assets/player/cariani_easy.png')]
+
+        elif dificuldade == "Medium":
+            self.sprites = [pygame.image.load('assets/player/cariani_medium.png')]
+
+        elif dificuldade == "Hard":
+            self.sprites = [pygame.image.load('assets/player/cariani_hard.png')]
 
         #variavel que guarda a posição da imagem atual
         self.current_sprite = 0
