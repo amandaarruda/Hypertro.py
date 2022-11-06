@@ -24,14 +24,14 @@ class Button():
 
     def changeColor(self, position):
         if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
-            self.text = main_font.render(self.text_input, True, "red")
+            self.text = main_font.render(self.text_input, True, "black") #mudança cor
         else:
             self.text = main_font.render(self.text_input, True, "white")
 
 
 def continuar_dificuldade(tela):
      
-    button_surface = pygame.image.load("./assets/display/button.png")
+    button_surface = pygame.image.load("./assets/button.png")
     button_surface = pygame.transform.scale(button_surface, (300, 90))
 
     button1 = Button(tela, button_surface, 320, 150, "Easy")

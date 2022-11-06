@@ -2,7 +2,7 @@ from Dificuldade import Button
 import pygame
 import sys
 
-button_surface = pygame.image.load("./assets/display/button.png")
+button_surface = pygame.image.load("./assets/button.png")
 button_surface = pygame.transform.scale(button_surface, (300, 60))
 
 def jogar_novamente_fucao(tela, resultado):
