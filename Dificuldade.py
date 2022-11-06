@@ -1,7 +1,7 @@
 import pygame
 import sys
 
-main_font = pygame.font.SysFont("arial", 40)
+main_font = pygame.font.SysFont("arial", 40)   
 
 class Button():
     def __init__(self, tela, image, x_pos, y_pos, text_input):
@@ -30,7 +30,7 @@ class Button():
 
 
 def continuar_dificuldade(tela):
-
+     
     button_surface = pygame.image.load("./assets/display/button.png")
     button_surface = pygame.transform.scale(button_surface, (300, 90))
 

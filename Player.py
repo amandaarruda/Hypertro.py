@@ -1,5 +1,6 @@
 import pygame 
 from pygame.locals import *
+from Dificuldade import continuar_dificuldade
 
 class Player(pygame.sprite.Sprite):
     #construtor da classe
@@ -16,7 +17,8 @@ class Player(pygame.sprite.Sprite):
         self.player_velocity = player_velocity
         #variavel que contém as sprites do player
         #(é um array pois quando tivermos animação será várias imagens)
-        self.sprites = [pygame.image.load('assets/player/cariani.png')]
+
+        self.sprites = [pygame.image.load('assets/player/cariani_hard.png')]
 
         #variavel que guarda a posição da imagem atual
         self.current_sprite = 0
