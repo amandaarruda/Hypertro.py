@@ -203,7 +203,7 @@ while jogar_novamente:
                 down_items_controller(items_sprites_group)
 
             if (item.item_fall()):
-                print('Não pegou :/')
+                print('Chegou até a falha...')
                 if item.get_item_type() != 'seringa':
                     life_controller.damage()
                 item.reset()
