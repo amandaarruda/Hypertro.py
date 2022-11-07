@@ -25,7 +25,7 @@ Em "Hypertro.py: Em Busca do Shape" você guiará o Carianinho em sua jornada no
 
 Você deverá ajudá-lo a coletar os seguintes itens para que ele alcance a hipertrofia: Anilhas, halteres, batatas-doces, creatina e a clássica proteína, indispensável!
 
-Colete pelo menos 5 de cada um dos elementos, tenha cuidado para não perder nehnhum e você já não será mais um iniciante! Vamos partir para o nível médio!
+Colete pelo menos 5 de cada um dos elementos, tenha cuidado para não perder nenhum e você já não será mais um iniciante! Vamos partir para o nível médio!
 
 ![cariani_medium](https://user-images.githubusercontent.com/66084295/200189464-b7b39859-4147-4ff3-876b-f01164fb7411.png)
 
