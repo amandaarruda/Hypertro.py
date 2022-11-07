@@ -1,6 +1,6 @@
 import pygame
 import sys
-
+from SoundController import Sound
 main_font = pygame.font.SysFont("arial", 40)   
 
 class Button():
@@ -49,7 +49,9 @@ def continuar_dificuldade(tela):
                 retorno1 = button1.checkForInput(pygame.mouse.get_pos())
                 retorno2 = button2.checkForInput(pygame.mouse.get_pos())
                 retorno3 = button3.checkForInput(pygame.mouse.get_pos())
-
+                mordida_music = Sound("./sounds/effects/mordida/mordida1.mp3", 1)
+                mordida_music.play()
+                print('tocou')
                 if retorno1:
                     continuar = False
                     return "Easy"

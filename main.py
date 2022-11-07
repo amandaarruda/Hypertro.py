@@ -77,18 +77,18 @@ while jogar_novamente:
     VOLUME_DO_JOGO = 0.4
 
     if dificuldade == "Easy":    
-        VELOCIDADE_DOS_ITENS = 0.5
+        VELOCIDADE_DOS_ITENS = 1
         VELOCIDADE_DO_PLAYER = 1.8
         NUMERO_DE_ITEMS_POR_FASE = 3
 
     if dificuldade == "Medium":    
-        VELOCIDADE_DOS_ITENS = 0.7
+        VELOCIDADE_DOS_ITENS = 1
         VELOCIDADE_DO_PLAYER = 1.7
         NUMERO_DE_ITEMS_POR_FASE = 4
 
     if dificuldade == "Hard":    
-        VELOCIDADE_DOS_ITENS = 0.9
-        VELOCIDADE_DO_PLAYER = 1.7
+        VELOCIDADE_DOS_ITENS = 1.4
+        VELOCIDADE_DO_PLAYER = 1.6
         NUMERO_DE_ITEMS_POR_FASE = 5
         
     #...
