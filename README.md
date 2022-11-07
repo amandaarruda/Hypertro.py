@@ -100,6 +100,9 @@ Entretanto, apesar de todos terem contribuido no código, a experiência do dese
 
 Por fim, também conseguimos realizar um projeto acima das nossas expectativas em relação a ideia original, uma vez que incrementamos os níveis, tivemos diferentes skins do personagem principal, um elemento coletável que auxilia no ganho de vida e outros ajustes finos que não havíamos planejado inicialmente. Concluimos o projeto extremamente satisfeitos com o nosso resultado.
 
+
+### Link para nossa apresentação:
+[Clique aqui para ver nossos slides!](https://www.canva.com/design/DAFRCiJ0ajY/ToPnFaAKSfZouJJjDC9wtQ/view?utm_content=DAFRCiJ0ajY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 ---
 
 ## Galeria do jogo📸:
