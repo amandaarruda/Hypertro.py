@@ -87,8 +87,8 @@ while jogar_novamente:
         NUMERO_DE_ITEMS_POR_FASE = 4
 
     if dificuldade == "Hard":    
-        VELOCIDADE_DOS_ITENS = 1.0
-        VELOCIDADE_DO_PLAYER = 1.6
+        VELOCIDADE_DOS_ITENS = 0.9
+        VELOCIDADE_DO_PLAYER = 1.7
         NUMERO_DE_ITEMS_POR_FASE = 5
         
     #...
@@ -102,7 +102,7 @@ while jogar_novamente:
     #Parâmetros = (nomeDaFonte, tamanho, negrito?, itálico?)
     display_text = pygame.font.SysFont('MS Sans Serif', 30, True, True)
 
-    background_music = Sound('./sounds/musics/musica_ambiente.mp3', VOLUME_DO_JOGO)
+    background_music = Sound("./sounds/musics/music_start.mp3", VOLUME_DO_JOGO)
     background_music.play()
 
     #instanciando grupo de sprites do projeto
