@@ -13,6 +13,7 @@ class Button():
         self.text_input = text_input
         self.text = main_font.render(self.text_input, True, "white")
         self.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))
+        
 
     def update(self):
         self.tela.blit(self.image, self.rect)
