@@ -29,7 +29,7 @@ class Tela_start:
                     self.tela.blit(self.bg_start,(0,0))   
 
     def mostrar_tela_start(self):
-        pygame.mixer.music.load("./sounds/musics/music_start.mp3")
+        pygame.mixer.music.load('./sounds/musics/musica_ambiente.mp3')
         pygame.mixer.music.play()
 
         self.tela.blit(self.bg_start,(0,0))
