@@ -25,7 +25,7 @@ Em "Hypertro.py: Em Busca do Shape" você guiará o Carianinho em sua jornada no
 
 Você deverá ajudá-lo a coletar os seguintes itens para que ele alcance a hipertrofia: Anilhas, halteres, batatas-doces, creatina e a clássica proteína, indispensável!
 
-Colete pelo menos 5 de cada um dos elementos, tenha cuidado para não perder nenhum e você já não será mais um iniciante! Vamos partir para o nível médio!
+Colete pelo menos 5 de cada um dos elementos, tenha cuidado para não perder nehnhum e você já não será mais um iniciante! Vamos partir para o nível médio!
 
 ![cariani_medium](https://user-images.githubusercontent.com/66084295/200189464-b7b39859-4147-4ff3-876b-f01164fb7411.png)
 
@@ -51,20 +51,25 @@ Nossa ideia é criar um trocadilho com o nome "hipertrofia" em inglês *(hypertr
 
 ### Organização do código:
 
-Utlizando progamação orientada a objetos, criamos classes que dividissem o jogo da seguinte forma:
-* ItemsClasses (Contém as subclasses com os nossos elementos: seringa, anilha, halter, batata-doce, frango, creatina)
+Para uma prática mais limpa, optamos por modularizar o jogo da seguinte forma:
+
+Utilizando programação orientada a objetos, criamos as seguintes classes:
+* ItemsClasses (Pasta que contém as classes com os nossos elementos: seringa, anilha, halter, batata-doce, frango, creatina)
 * Mochila (Para coletar os elementos)
-* Controlador de vida (Administra os corações e contabiliza o dano quando se deixa de coletar um elemento)
-* Assets (Os elementos visuais do jogo)
-* Sounds e Sound Controller (Para administrar as trilhas sonoras durante os seguintes momentos: início, durante o jogo, vitória e perda)
+* Sounds (Para administrar as trilhas sonoras durante os seguintes momentos: início, durante o jogo, vitória e perda)
 * Placar (Responsável por contabilizar os pontos)
-* Dificuldade (Busca ajustar o jogo de acordo com a dificuldade selecionada)
 * Player (Direciona o Carianinho na tela e evolui o personagem de acordo com o nível)
 * Item (Determina a queda dos itens do jogo, aplicando a gravidade de maneira adequada)
 * Quadrante (Gera um range adequado para que os elementos caiam de maneira a ser capturados)
-* Screen Win Lose (Direciona o usuário de acordo com o resultado e permite que o jogo possa ser reiniciado)
 * Start Screen (É a entrada do nosso jogo, direciona o jogador para o menu)
-* Main (Por último, mas não menos importante, ela define a mecânica do jogo e permite a integração entre as classes)
+* Controlador de vida (Administra os corações e contabiliza o dano quando se deixa de coletar um elemento)
+* Button (Controla os botões do jogo)
+
+Demais módulos e pastas:
+* Screen Win Lose (Direciona o usuário de acordo com o resultado e permite que o jogo possa ser reiniciado)
+* Dificuldade (Busca ajustar o jogo de acordo com a dificuldade selecionada)
+* Assets (Pasta que contém os elementos visuais do jogo)
+* Main (Por último, mas não menos importante, o arquivo main define a mecânica do jogo e permite a integração entre as funções e classes de cada módulo)
 
 ### Ferramentas, Bibliotecas e Frameworks:
 Utilizamos o Python como ferramenta para o desenvolvimento do jogo e a biblioteca Pygame, além da IDE Visual Studio Code. Optamos por essa combinação devido a familiaridade dos integrantes com elas, bem como pelo direcionamento em sala de aula.
@@ -87,7 +92,7 @@ Funções específicas:
 
 ### Conceitos que foram apresentados durante a disciplina e utilizados no projeto:
 
-Para a estrutura lógica básica do jogo, utilizamos, assim como aprendemos em sala, operadores lógicos, comandos condicionais e laços de repetição. Além disso, para a implementação dos objetos coletáveis, foi preciso utilizar conceitos de listas, tuplas e dicionários. Por fim, utilizamos nas classes de programação orientada a objeto diversas funções.
+Para a estrutura lógica básica do jogo, utilizamos, assim como aprendemos em sala, operadores lógicos, comandos condicionais e laços de repetição. Além disso, para a implementação dos objetos coletáveis, foi preciso utilizar conceitos de listas, tuplas e dicionários. Por fim, utilizamos a modularização, a programação orientada a objetos e funções.
 
 ### Desafios e aprendizados:
 
